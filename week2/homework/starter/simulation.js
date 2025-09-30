@@ -8,25 +8,25 @@ const goButton = document.getElementById('go');
 const pauseButton = document.getElementById('pause');
 const randomButton = document.getElementById('random');
 
-// 游戏状态
+// game initial
 let board = [];
 let intervalId = null;
 const BOARD_SIZE = 25;
 
-// 创建初始棋盘（黑白相间）
-function createCheckerboard() {
+// create the board
+function createStartBoard() {
     const newBoard = [];
     for (let i = 0; i < BOARD_SIZE; i++) {
         const row = [];
         for (let j = 0; j < BOARD_SIZE; j++) {
-            row.push((i + j) % 2 === 0); // 黑白交替
+            row.push((i + j) % 2 === 0); 
         }
         newBoard.push(row);
     }
     return newBoard;
 }
 
-// 创建随机棋盘
+// randomBoard
 function createRandomBoard() {
     const newBoard = [];
     for (let i = 0; i < BOARD_SIZE; i++) {
@@ -39,11 +39,12 @@ function createRandomBoard() {
     return newBoard;
 }
 
-// 渲染棋盘到DOM
+
 function renderBoard() {
-    boardElement.innerHTML = ''; // 清空棋盘
-    
-    // 创建25x25的单元格
+    while (boardElement.firstChild) {
+        boardElement.removeChild(boardElement.firstChild);
+    }
+
     for (let i = 0; i < BOARD_SIZE; i++) {
         for (let j = 0; j < BOARD_SIZE; j++) {
             const cell = document.createElement('div');
@@ -53,7 +54,7 @@ function renderBoard() {
     }
 }
 
-// 更新棋盘状态（不重新创建DOM）
+
 function updateBoard() {
     const cells = boardElement.children;
     for (let i = 0; i < BOARD_SIZE; i++) {
@@ -64,26 +65,26 @@ function updateBoard() {
     }
 }
 
-// 计算下一代
+
 function stepSimulation() {
-    board = stepBoard(board); // 调用conway.js中的函数
+    board = stepBoard(board); 
     updateBoard();
 }
 
-// 重置为初始状态
+
 function resetSimulation() {
     stopSimulation();
-    board = createCheckerboard();
+    board = createStartBoard();
     updateBoard();
 }
 
-// 开始自动运行
+
 function startSimulation() {
-    stopSimulation(); // 防止重复启动
-    intervalId = setInterval(stepSimulation, 100); // 每100ms一步
+    stopSimulation(); 
+    intervalId = setInterval(stepSimulation, 100); 
 }
 
-// 停止自动运行
+
 function stopSimulation() {
     if (intervalId !== null) {
         clearInterval(intervalId);
@@ -91,22 +92,22 @@ function stopSimulation() {
     }
 }
 
-// 随机生成棋盘
+
 function randomizeBoard() {
     stopSimulation();
     board = createRandomBoard();
     updateBoard();
 }
 
-// 绑定按钮事件
+
 stepButton.addEventListener('click', stepSimulation);
 resetButton.addEventListener('click', resetSimulation);
 goButton.addEventListener('click', startSimulation);
 pauseButton.addEventListener('click', stopSimulation);
 randomButton.addEventListener('click', randomizeBoard);
 
-// 初始化游戏
-board = createCheckerboard();
+
+board = createStartBoard();
 
 renderBoard();
 
