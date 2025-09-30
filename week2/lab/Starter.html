@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)https://www.cs.drexel.edu/~nkl43/cs375/labs/2a_client_side_js_hof0e/starter.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>Starter</title>
+	<style type="text/css">
+		/* TODO */
+		table {
+			border-collapse: collapse;
+		}
+		td {
+			border: 1px solid black;
+			padding: 5px;
+		}
+	</style>
+	<link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style></head>
+<body>
+	<div id="count-container">0</div>
+	<button id="start">Start</button>
+	<button id="stop">Stop</button>
+
+	<table>
+		<tbody id="number-grid"></tbody>
+	</table>
+
+	<button id="increment">Increment</button>
+
+	<script type="text/javascript">
+		let numberGrid = [[1, 2, 3], [4, 5, 6]];
+
+		function incrementGrid() {
+			// don't modify this function
+			for (let i = 0; i < numberGrid.length; i++) {
+				for (let j = 0; j < numberGrid[0].length; j++) {
+					numberGrid[i][j]++;
+				}
+			}
+		}
+		
+		// TODO
+		let startCount = 0;
+		let running = 0;
+		document.getElementById("start").addEventListener('click',function(){
+			
+			if(running === 0){
+				startCount = setInterval(function(){
+					running = 1;
+				const counter = document.getElementById("count-container");
+				counter.textContent = parseInt(counter.textContent) + 1;
+			}, 500);
+			}
+
+		})
+
+		document.getElementById("stop").addEventListener('click', function(){
+			running = 0;
+			clearInterval(startCount);
+		})
+
+
+		document.getElementById("increment").addEventListener('click', function(){
+			incrementGrid();
+		})
+
+		function createTable(){
+
+			let boardRow = numberGrid.length;
+			let boardCol = numberGrid[0].length;
+
+
+			console.log("createTable been called. boardRow: ", boardRow,  " boardCol: ", boardCol);
+
+			
+			
+			let value = 1;
+
+
+			
+			for(let i = 0; i < boardRow; i++){
+				console.log("i=", i);
+				const newTr = document.createElement('tr');
+				document.getElementById("number-grid").appendChild(newTr);
+				
+				for(let j = 0; j < boardCol; j++){
+					const newTd = document.createElement('td');
+					console.log("j:",j);
+					newTr.appendChild(newTd);
+					newTd.textContent = value;
+					value++;
+				}	
+			}
+			
+		
+
+		}
+		
+
+
+
+
+		createTable();
+	</script>
+
+
+</body></html>
