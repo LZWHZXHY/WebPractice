@@ -1,1 +1,103 @@
 Question 1:
+protocol: https
+domain:catalog.drexel.edu
+route:/undergraduate/collegeofcomputingandinformatics/computerscience/
+not port
+
+Question 2:
+a: request method is GET. Get method will ask for information, just return the message, without change anything.
+b: route requested : /foo/bar , bar file probably will be served.
+c: It's mean user are send request from Firefox on Macbook
+d: English.
+e: No. because Get usually not change anything, so you don't need body.
+
+Question 3:
+a: 200, and 200 is mean successfully access the link. Everything is right.
+b: text/plain, this is mean it's a pure text file, no html, or js or something like that, just a txt file, like table or list, just some text data.
+
+Question 4:
+This is because google.com is just a entry point, the big website usually will split into many components, this depends on the frame work, like VUE3. And also the website will have a lot of api or resource are also using http.
+
+Question 5:
+a:
+From cmd:
+StatusCode        : 200
+StatusDescription : OK
+Content           : <p>Hello! <strong>I am a paragraph!</strong></p>
+
+RawContent        : HTTP/1.1 200 OK
+                    Connection: keep-alive
+                    Keep-Alive: timeout=5
+                    Content-Length: 49
+                    Content-Type: text/plain
+                    Date: Tue, 30 Sep 2025 17:37:15 GMT
+
+                    <p>Hello! <strong>I am a paragraph!</strong></p>
+
+Forms             : {}
+Headers           : {[Connection, keep-alive], [Keep-Alive, timeout=5], [Content-Length, 49], [Content-Type, text/plain]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : mshtml.HTMLDocumentClass
+RawContentLength  : 49
+
+
+From Network:
+Request URL
+http://127.0.0.1:3000/favicon.ico
+Request Method
+GET
+Status Code
+200 OK
+Remote Address
+127.0.0.1:3000
+Referrer Policy
+strict-origin-when-cross-origin
+connection
+keep-alive
+content-length
+49
+content-type
+text/plain
+date
+Tue, 30 Sep 2025 17:36:34 GMT
+keep-alive
+timeout=5
+accept
+image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+accept-encoding
+gzip, deflate, br, zstd
+accept-language
+zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7,ja;q=0.6,pl;q=0.5
+connection
+keep-alive
+host
+127.0.0.1:3000
+referer
+http://127.0.0.1:3000/
+sec-ch-ua
+"Opera GX";v="121", "Chromium";v="137", "Not/A)Brand";v="24"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+sec-fetch-dest
+image
+sec-fetch-mode
+no-cors
+sec-fetch-site
+same-origin
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 OPR/121.0.0.0
+
+The infomation on website are little more than cmd.
+
+b: HTTP reuest sent by curl will lack some information inside of header, something like cookie or accept-Language.
+
+Question 6:
+I think the reason is 127.0.0.1:3000/foo/bar/baaz is not exsit, so it return the defualt index.html page.
+
+Question 7:
+The content and style are changed. Now the page only have Hello! I am a paragraph! with correct style.
+The reason we have this changes is because we change the content-type from plain to html. So the web will render like html.

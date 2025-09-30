@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+#board {
+    display: grid;
+    grid-template-columns: repeat(25, 20px);
+    grid-template-rows: repeat(25, 20px);
+    gap: 1px;
+    margin: 20px 0;
+}
+.cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+}
+.dead { background-color: white; }
+.alive { background-color: #ecdb42; }
+#controls { display: flex; gap: 10px; margin-bottom: 20px; }
+button { padding: 8px 16px; cursor: pointer; }
